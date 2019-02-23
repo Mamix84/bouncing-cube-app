@@ -1,8 +1,8 @@
 language: node_js
 node_js:
   - "node"
-before_install:
-  - npm i -g npm@6.4.1
+script:
+  -
 deploy:
   provider: firebase
   token:
