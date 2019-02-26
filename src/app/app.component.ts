@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebGLRenderer, Scene, Camera } from 'three';
-import { CameraFactory } from './camera/camera-factory';
-import { MainCamera } from './camera/main-camera/main-camera';
-import { MainScene } from './scene/main-scene/main-scene';
+import { MainCamera } from './camera/main-camera';
+import { MainScene } from './scene/main-scene';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +24,7 @@ export class AppComponent implements OnInit {
     this.renderer.shadowMap.enabled = true;
 
     // Scene
-    this.scene = new MainScene().scene;
+    this.scene = new MainScene();
 
     // Camera
     this.camera = new MainCamera();
