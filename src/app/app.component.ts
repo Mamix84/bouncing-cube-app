@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { WebGLRenderer, Scene, Camera } from 'three';
 import { MainCamera } from './camera/main-camera';
-import { MainScene } from './scene/main-scene';
+import { MainScene } from './scene/scene-impl/main-scene';
+import { SceneInterface } from './scene/scene-interface';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { MainScene } from './scene/main-scene';
 })
 export class AppComponent implements OnInit {
   private renderer: WebGLRenderer;
+  private mainScene: MainScene;
   private scene: Scene;
   private camera: Camera;
   private animation: any;
@@ -24,21 +26,22 @@ export class AppComponent implements OnInit {
     this.renderer.shadowMap.enabled = true;
 
     // Scene
-    this.scene = new MainScene();
+    this.mainScene = new MainScene();
+    this.scene = this.mainScene.retrieveScene();
 
     // Camera
     this.camera = new MainCamera();
-    this.scene.add(this.camera);
+    this.scene.add(this.camera.retrieveCamera());
 
     // Canvas
     document.getElementById('canvas').appendChild(this.renderer.domElement);
-    window.addEventListener('resize', this.onWindowResize, false);
 
     // Animation
     this.animate();
   }
 
-  onWindowResize() {
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -47,6 +50,8 @@ export class AppComponent implements OnInit {
   animate(): any {
     const requestId = requestAnimationFrame(this.animate.bind(this));
 
-    this.animation = this.renderer.render(this.scene, this.camera);
+    // this.scene.animate();
+
+    this.animation = this.renderer.render(this.scene, this.camera.retrieveCamera());
   }
 }

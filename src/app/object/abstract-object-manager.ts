@@ -9,4 +9,6 @@ export abstract class AbstractObjectManager {
     }
 
     abstract createObject(): Mesh;
+
+    abstract animateObject();
 }
