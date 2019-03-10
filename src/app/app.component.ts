@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.autoClear = true;
     this.renderer.shadowMap.enabled = true;
+    this.renderer.gammaInput = true;
+    this.renderer.gammaOutput = true;
 
     // Scene
     this.mainScene = new MainScene();
@@ -50,7 +52,7 @@ export class AppComponent implements OnInit {
   animate(): any {
     const requestId = requestAnimationFrame(this.animate.bind(this));
 
-    // this.scene.animate();
+    this.mainScene.animate();
 
     this.animation = this.renderer.render(this.scene, this.camera.retrieveCamera());
   }
