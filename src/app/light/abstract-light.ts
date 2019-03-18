@@ -13,5 +13,7 @@ export abstract class AbstractLight {
     retrieveLight(): Light {
         return this.light;
     }
+  
+    abstract animateLight(): void;
 
 }
