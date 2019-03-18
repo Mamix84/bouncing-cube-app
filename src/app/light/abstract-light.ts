@@ -15,4 +15,5 @@ export abstract class AbstractLight {
     }
   
     abstract animateLight: void ();
+
 }
