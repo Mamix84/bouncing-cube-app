@@ -1,4 +1,4 @@
-import { PointLight, Light } from 'three';
+import { PointLight, Light, Color } from 'three';
 import { LightInterface } from '../light-interface';
 import { AbstractLight } from '../abstract-light';
 
@@ -27,5 +27,8 @@ export class PrimaryPointLight extends AbstractLight implements LightInterface {
         super.initLight(light);
     }
 
-    animateLight() { }
+    animateLight() { 
+     const light = super.retrieveLight();
+      light.color = new Color(Math.random(255), Math.random(255), Math.random(255));
+    }
 }
