@@ -39,6 +39,7 @@ export class MainScene extends AbstractScene implements SceneInterface {
 
     animate(): void {
        super.retrieveObject('cube1').animateMesh();
+      super.retrieveLight('primaryPointLight').animateLight();
     }
 
 }
