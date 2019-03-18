@@ -29,6 +29,6 @@ export class PrimaryPointLight extends AbstractLight implements LightInterface {
 
     animateLight() { 
      const light = super.retrieveLight();
-      light.color = new Color(Math.random(255), Math.random(255), Math.random(255));
+      light.color = new Color(Math.random()*255, Math.random()*255, Math.random()*255);
     }
 }
