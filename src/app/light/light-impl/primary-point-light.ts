@@ -31,9 +31,9 @@ export class PrimaryPointLight extends AbstractLight implements LightInterface {
      const light = super.retrieveLight();
       const min = Math.ceil(0);
       const max = Math.floor(255);
-      const colorR Math.floor(Math.random() * (max - min + 1)) + min;
-      const colorG Math.floor(Math.random() * (max - min + 1)) + min;
-      const colorB Math.floor(Math.random() * (max - min + 1)) + min;
+      const colorR = Math.floor(Math.random() * (max - min + 1)) + min;
+      const colorG = Math.floor(Math.random() * (max - min + 1)) + min;
+      const colorB = Math.floor(Math.random() * (max - min + 1)) + min;
       light.color = new Color(colorR, colorG, colorB);
     }
 }
