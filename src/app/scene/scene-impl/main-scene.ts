@@ -9,6 +9,11 @@ import { SceneInterface } from '../scene-interface';
 import { Plane } from 'src/app/object/mesh-impl/plane';
 import { MarshallCube } from 'src/app/object/mesh-impl/marshall-cube';
 import { ChaseCube } from 'src/app/object/mesh-impl/chase-cube';
+import { RubbleCube } from 'src/app/object/mesh-impl/rubble-cube';
+import { SkyeCube } from 'src/app/object/mesh-impl/skye-cube';
+import { ZumaCube } from 'src/app/object/mesh-impl/zuma-cube';
+import { RockyCube } from 'src/app/object/mesh-impl/rocky-cube';
+import { RyderCube } from 'src/app/object/mesh-impl/ryder-cube';
 
 export class MainScene extends AbstractScene implements SceneInterface {
 
@@ -29,6 +34,11 @@ export class MainScene extends AbstractScene implements SceneInterface {
 
         super.addObject('marshallCube', new MarshallCube());
         super.addObject('chaseCube', new ChaseCube());
+        super.addObject('rubbleCube', new RubbleCube());
+        super.addObject('skyeCube', new SkyeCube());
+        super.addObject('zumaCube', new ZumaCube());
+        super.addObject('rockyCube', new RockyCube());
+        super.addObject('ryderCube', new RyderCube());
         super.addObject('plane', new Plane());
     }
 
@@ -43,6 +53,11 @@ export class MainScene extends AbstractScene implements SceneInterface {
         // super.retrieveLight('primaryDirectionaLight').animateLight();
         super.retrieveObject('marshallCube').animateMesh();
         super.retrieveObject('chaseCube').animateMesh();
+        super.retrieveObject('rubbleCube').animateMesh();
+        super.retrieveObject('skyeCube').animateMesh();
+        super.retrieveObject('zumaCube').animateMesh();
+        super.retrieveObject('rockyCube').animateMesh();
+        super.retrieveObject('ryderCube').animateMesh();
 
     }
 
