@@ -1,4 +1,4 @@
-import { DirectionalLight, Light } from 'three';
+import { DirectionalLight, Light, Color } from 'three';
 import { LightInterface } from '../light-interface';
 import { AbstractLight } from '../abstract-light';
 
@@ -16,5 +16,7 @@ export class PrimaryDirectionalLight extends AbstractLight implements LightInter
         super.initLight(light);
     }
 
-    animateLight() { }
+    animateLight(): void {
+        super.retrieveLight().color = new Color(Math.random(), Math.random(), Math.random());
+    }
 }

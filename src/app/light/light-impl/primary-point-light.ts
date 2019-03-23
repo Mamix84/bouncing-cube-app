@@ -10,7 +10,7 @@ export class PrimaryPointLight extends AbstractLight implements LightInterface {
         this.createLight();
     }
 
-    createLight() {
+    createLight(): void {
         const light = new PointLight(0xFFFFFF, 100, 100);
         light.position.set(0, 3, 0);
         light.castShadow = true;
@@ -27,14 +27,7 @@ export class PrimaryPointLight extends AbstractLight implements LightInterface {
         super.initLight(light);
     }
 
-    animateLight() { 
-     const light = super.retrieveLight();
-      const min = Math.ceil(0);
-      const max = Math.floor(255);
-      const colorR = Math.floor(Math.random() * (max - min + 1)) + min;
-      const colorG = Math.floor(Math.random() * (max - min + 1)) + min;
-      const colorB = Math.floor(Math.random() * (max - min + 1)) + min;
-      // light.color = new Color(colorR, colorG, colorB);
-      light.color = new Color(Math.random(), Math.random(), Math.random());
+    animateLight(): void {
+        super.retrieveLight().color = new Color(Math.random(), Math.random(), Math.random());
     }
 }

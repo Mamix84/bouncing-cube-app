@@ -25,7 +25,7 @@ export abstract class AbstractScene {
     }
 
     protected addLight(key: string, value: AbstractLight) {
-        this.mapLight.set(key, value.retrieveLight());
+        this.mapLight.set(key, value);
         this.scene.add(value.retrieveLight());
     }
 
