@@ -1,4 +1,4 @@
-import { Scene, AxesHelper, Fog, Light, Mesh } from 'three';
+import { Scene, AxesHelper, Fog, Light, Mesh, TextureLoader, MeshLambertMaterial, RepeatWrapping } from 'three';
 import { Cube1 } from 'src/app/object/mesh-impl/cube1';
 import { PrimaryLight } from 'src/app/light/light-impl/primary-light';
 import { PrimaryAmbientLight } from 'src/app/light/light-impl/primary-ambient-light';
@@ -14,6 +14,8 @@ import { SkyeCube } from 'src/app/object/mesh-impl/skye-cube';
 import { ZumaCube } from 'src/app/object/mesh-impl/zuma-cube';
 import { RockyCube } from 'src/app/object/mesh-impl/rocky-cube';
 import { RyderCube } from 'src/app/object/mesh-impl/ryder-cube';
+import { SecondaryDirectionalLight } from 'src/app/light/light-impl/secondary-directional-light';
+import { ThirdaryDirectionalLight } from 'src/app/light/light-impl/thirdary-directional-light';
 
 export class MainScene extends AbstractScene implements SceneInterface {
 
@@ -21,6 +23,17 @@ export class MainScene extends AbstractScene implements SceneInterface {
         super();
 
         const scene = new Scene();
+
+        const loader = new TextureLoader();
+        const texture = loader.load('/assets/texture/sky.jpg');
+        texture.wrapS = texture.wrapT = RepeatWrapping;
+        texture.repeat.set(1, 1);
+        texture.anisotropy = 16;
+
+        const material = new MeshLambertMaterial({ map: texture });
+
+        scene.background = texture;
+
         super.initScene(scene);
 
         this.initLights();
@@ -46,6 +59,8 @@ export class MainScene extends AbstractScene implements SceneInterface {
         // this.addLight('primaryLight', new PrimaryLight());
         // super.addLight('primaryAmbientLight', new PrimaryAmbientLight());
         super.addLight('primaryDirectionaLight', new PrimaryDirectionalLight());
+        super.addLight('secondaryDirectionaLight', new SecondaryDirectionalLight());
+        super.addLight('thirdaryDirectionaLight', new ThirdaryDirectionalLight());
         // super.addLight('primaryPointLight', new PrimaryPointLight());
     }
 

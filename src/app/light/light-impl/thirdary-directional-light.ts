@@ -2,7 +2,7 @@ import { DirectionalLight, Light, Color } from 'three';
 import { LightInterface } from '../light-interface';
 import { AbstractLight } from '../abstract-light';
 
-export class PrimaryDirectionalLight extends AbstractLight implements LightInterface {
+export class ThirdaryDirectionalLight extends AbstractLight implements LightInterface {
 
     constructor() {
         super();
@@ -12,7 +12,7 @@ export class PrimaryDirectionalLight extends AbstractLight implements LightInter
 
     createLight() {
         const light = new DirectionalLight(0xffffff, 1);
-        light.position.set(0, 50, 100).normalize();
+        light.position.set(10, 50, 100).normalize();
 
         light.castShadow = true;
 

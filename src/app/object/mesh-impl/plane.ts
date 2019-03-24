@@ -12,7 +12,7 @@ export class Plane extends AbstractMesh implements MeshInterface {
 
     createMesh(): void {
         const geometry = new PlaneGeometry(100, 100, 102);
-        const material = new MeshPhongMaterial({ color: 0xffffff, side: DoubleSide });
+        const material = new MeshPhongMaterial({ color: 0x00ff00, side: DoubleSide });
         const plane = new Mesh(geometry, material);
         plane.rotation.x = -Math.PI / 2;
         plane.castShadow = true;

@@ -1,4 +1,4 @@
-import { BoxGeometry, MeshLambertMaterial, Mesh, Color, RepeatWrapping, TextureLoader } from 'three';
+import { BoxGeometry, MeshPhongMaterial, Mesh, Color, RepeatWrapping, TextureLoader } from 'three';
 import { AbstractMesh } from '../abstract-mesh';
 import { MeshInterface } from '../mesh-interface';
 
@@ -24,7 +24,7 @@ export class ChaseCube extends AbstractMesh implements MeshInterface {
         texture.repeat.set(1, 1);
         texture.anisotropy = 16;
 
-        const material = new MeshLambertMaterial({ map: texture });
+        const material = new MeshPhongMaterial({ map: texture, shininess: 100 });
 
         const cube = new Mesh(geometry, material);
         cube.position.x = 4;
