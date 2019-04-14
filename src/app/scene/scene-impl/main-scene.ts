@@ -16,6 +16,7 @@ import { RockyCube } from 'src/app/object/mesh-impl/rocky-cube';
 import { RyderCube } from 'src/app/object/mesh-impl/ryder-cube';
 import { SecondaryDirectionalLight } from 'src/app/light/light-impl/secondary-directional-light';
 import { ThirdaryDirectionalLight } from 'src/app/light/light-impl/thirdary-directional-light';
+import { LowPolyTree } from 'src/app/object/mesh-impl/low-poly-tree';
 
 export class MainScene extends AbstractScene implements SceneInterface {
 
@@ -53,6 +54,9 @@ export class MainScene extends AbstractScene implements SceneInterface {
         super.addObject('rockyCube', new RockyCube());
         super.addObject('ryderCube', new RyderCube());
         super.addObject('plane', new Plane());
+        for (let i = 0; i < 80; i++) {
+            const tree = new LowPolyTree('lowPolyTree' + i, this);
+        }
     }
 
     initLights(): void {

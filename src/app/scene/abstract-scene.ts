@@ -1,6 +1,7 @@
 import { Scene, Mesh } from 'three';
 import { AbstractLight } from 'src/app/light/abstract-light';
 import { AbstractMesh } from 'src/app/object/abstract-mesh';
+import { AbstractObject } from 'src/app/object/abstract-object';
 
 export abstract class AbstractScene {
 
@@ -10,10 +11,14 @@ export abstract class AbstractScene {
 
     private mapObject: Map<string, AbstractMesh>;
 
+    private mapObjectLoad: Map<string, AbstractObject>;
+
     constructor() {
         this.mapLight = new Map<string, AbstractLight>();
 
         this.mapObject = new Map<string, AbstractMesh>();
+
+        this.mapObjectLoad = new Map<string, AbstractObject>();
     }
 
     protected initScene(scene: Scene) {
@@ -40,6 +45,15 @@ export abstract class AbstractScene {
 
     protected retrieveObject(key: string): AbstractMesh {
         return this.mapObject.get(key);
+    }
+
+    protected addObjectLoad(key: string, value: AbstractObject) {
+        this.mapObjectLoad.set(key, value);
+        this.scene.add(value.retrieveObject());
+    }
+
+    protected retrieveObjectLoad(key: string): AbstractObject {
+        return this.mapObjectLoad.get(key);
     }
 
 }
